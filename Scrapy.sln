@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrapy.Api", "Scrapy.Api\Scrapy.Api.csproj", "{3F4DD2E8-4822-474E-A99D-DDB2DB16933D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrapy.Core", "Scrapy.Core\Scrapy.Core.csproj", "{D6E27B93-EC29-4A6D-8587-BE02B8CC94E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrapy.Infrastructure", "Scrapy.Infrastructure\Scrapy.Infrastructure.csproj", "{50E56D1E-1163-43AD-8573-3C85ADFFB1D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{3F4DD2E8-4822-474E-A99D-DDB2DB16933D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F4DD2E8-4822-474E-A99D-DDB2DB16933D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F4DD2E8-4822-474E-A99D-DDB2DB16933D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E27B93-EC29-4A6D-8587-BE02B8CC94E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E27B93-EC29-4A6D-8587-BE02B8CC94E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E27B93-EC29-4A6D-8587-BE02B8CC94E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E27B93-EC29-4A6D-8587-BE02B8CC94E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E56D1E-1163-43AD-8573-3C85ADFFB1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E56D1E-1163-43AD-8573-3C85ADFFB1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E56D1E-1163-43AD-8573-3C85ADFFB1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E56D1E-1163-43AD-8573-3C85ADFFB1D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -5,8 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
+      <ProjectReference Include="..\Scrapy.Core\Scrapy.Core.csproj" />
+      <ProjectReference Include="..\Scrapy.Infrastructure\Scrapy.Infrastructure.csproj" />
     </ItemGroup>
-
 
 </Project>
