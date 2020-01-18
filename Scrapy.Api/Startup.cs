@@ -10,7 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using Scrapy.Core.Interfaces;
+using Scrapy.Core.Interfaces.PageObjects;
+using Scrapy.Core.Interfaces.Services;
+using Scrapy.Infrastructure.PageObjects;
 using Scrapy.Infrastructure.Services;
 
 namespace Scrapy.Api
@@ -28,6 +33,7 @@ namespace Scrapy.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IImdbScraperService, ImdbScraperService>();
+            
             
             services.AddControllers();
         }
