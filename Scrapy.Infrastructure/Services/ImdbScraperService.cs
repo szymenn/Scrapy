@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using Scrapy.Core.Dtos;
 using Scrapy.Core.Interfaces;
 using Scrapy.Core.Interfaces.PageObjects;
 using Scrapy.Core.Interfaces.Services;
@@ -12,7 +14,7 @@ namespace Scrapy.Infrastructure.Services
 {
     public class ImdbScraperService : IImdbScraperService
     {
-        public string Search(string title)
+        public IEnumerable<ResultItem> Search(string title)
         {
             using IWebDriver driver = new ChromeDriver
                 (@"C:\Users\User\RiderProjects\Scrapy\Scrapy.Infrastructure\bin\Debug\netcoreapp3.1");
@@ -22,7 +24,12 @@ namespace Scrapy.Infrastructure.Services
             homePage.GoToPage();
             var search = homePage.Search(title);
             Console.WriteLine(search.MovieResults.Aggregate("", (current, next) => current + "\n" + next.Text));
-            return search.MovieResults.Aggregate("", (current, next) => current + "\n" + next.Text);
+
+            return search.MovieResults.Concat(search.AnchorTags).Select(item => new ResultItem
+            {
+                Name = item.Text,
+                Href = item.GetAttribute("href")
+            }).ToList();
         }
     }
 }
