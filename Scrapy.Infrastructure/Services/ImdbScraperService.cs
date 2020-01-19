@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -11,7 +12,7 @@ namespace Scrapy.Infrastructure.Services
 {
     public class ImdbScraperService : IImdbScraperService
     {
-        public void Run()
+        public string Search(string title)
         {
             using IWebDriver driver = new ChromeDriver
                 (@"C:\Users\User\RiderProjects\Scrapy\Scrapy.Infrastructure\bin\Debug\netcoreapp3.1");
@@ -19,9 +20,9 @@ namespace Scrapy.Infrastructure.Services
 
             var homePage = new HomePage(driver);
             homePage.GoToPage();
-            var search = homePage.Search("Batman");
-            Console.WriteLine(search.MovieResult.Text);
-            Console.WriteLine(search.Header.Text);
+            var search = homePage.Search(title);
+            Console.WriteLine(search.MovieResults.Aggregate("", (current, next) => current + "\n" + next.Text));
+            return search.MovieResults.Aggregate("", (current, next) => current + "\n" + next.Text);
         }
     }
 }
