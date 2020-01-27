@@ -1,9 +1,11 @@
+using System.Collections.Generic;
+using Scrapy.Core.Dtos;
 using Scrapy.Core.Interfaces.PageObjects;
 
 namespace Scrapy.Core.Interfaces.Services
 {
     public interface IImdbScraperService
     {
-        void Run();
+        IEnumerable<ResultItem> Search(string title);
     }
 }

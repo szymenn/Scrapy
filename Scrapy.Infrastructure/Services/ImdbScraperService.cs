@@ -23,12 +23,11 @@ namespace Scrapy.Infrastructure.Services
             var homePage = new HomePage(driver);
             homePage.GoToPage();
             var search = homePage.Search(title);
-            Console.WriteLine(search.MovieResults.Aggregate("", (current, next) => current + "\n" + next.Text));
 
-            return search.MovieResults.Concat(search.AnchorTags).Select(item => new ResultItem
+            return search.MovieResults.Select(movie => new ResultItem
             {
-                Name = item.Text,
-                Href = item.GetAttribute("href")
+                Name = movie.Text,
+                Href = movie.FindElement(By.TagName("a")).GetAttribute("href")
             }).ToList();
         }
     }
