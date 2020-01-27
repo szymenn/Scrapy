@@ -14,15 +14,18 @@ namespace Scrapy.Infrastructure.Services
 {
     public class ImdbScraperService : IImdbScraperService
     {
+        private readonly IHomePage _homePage;
+        public ImdbScraperService()
+        {
+            var driver = new ChromeDriver
+                (@"C:\Users\User\RiderProjects\Scrapy\Scrapy.Infrastructure\bin\Debug\netcoreapp3.1");
+            _homePage = new HomePage(driver);
+            _homePage.GoToPage();
+        }
+        
         public IEnumerable<ResultItem> Search(string title)
         {
-            using IWebDriver driver = new ChromeDriver
-                (@"C:\Users\User\RiderProjects\Scrapy\Scrapy.Infrastructure\bin\Debug\netcoreapp3.1");
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
-            var homePage = new HomePage(driver);
-            homePage.GoToPage();
-            var search = homePage.Search(title);
+            var search = _homePage.Search(title);
 
             return search.MovieResults.Select(movie => new ResultItem
             {
